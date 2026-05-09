@@ -1,0 +1,195 @@
+@prefix ifq: <https://wherewelearn.org/ontology/ifq#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ifq:Ontology
+    a owl:Ontology ;
+    rdfs:label "International Framework of Qualifications Ontology"@en ;
+    dcterms:title "International Framework of Qualifications Ontology"@en ;
+    dcterms:description "A sparse international educational progression ontology for approximate educational interoperability."@en ;
+    dcterms:creator "WhereWeLearn"@en ;
+    dcterms:issued "2026-05-09"^^xsd:date ;
+    owl:versionInfo "0.1.0-draft" ;
+    rdfs:comment "IFQ models approximate educational progression, not legal equivalence, competency mastery, curriculum equality, institutional prestige, or educational quality."@en .
+
+ifq:IFQLevel
+    a owl:Class ;
+    rdfs:label "IFQ Level"@en ;
+    rdfs:comment "An approximate international educational progression stage."@en .
+
+ifq:EducationSystem
+    a owl:Class ;
+    rdfs:label "Education System"@en ;
+    rdfs:comment "A national, regional, or reference education system that can be mapped into IFQ."@en .
+
+ifq:EducationStage
+    a owl:Class ;
+    rdfs:label "Education Stage"@en ;
+    rdfs:comment "A local education year, grade, stage, cycle, or programme within an education system."@en .
+
+ifq:Qualification
+    a owl:Class ;
+    rdfs:label "Qualification"@en ;
+    rdfs:comment "A formal exam, certificate, diploma, degree, or award associated with an education stage or pathway."@en .
+
+ifq:LearningResource
+    a owl:Class ;
+    rdfs:label "Learning Resource"@en ;
+    rdfs:comment "A lesson, course, article, tutorial, assessment, or other educational resource that may target one or more IFQ levels."@en .
+
+ifq:MappingAssertion
+    a owl:Class ;
+    rdfs:label "Mapping Assertion"@en ;
+    rdfs:comment "An approximate, evidence-backed mapping between a local educational entity and an IFQ level."@en .
+
+ifq:Source
+    a owl:Class ;
+    rdfs:label "Source"@en ;
+    rdfs:comment "A source, authority, document, or reference used to support an IFQ mapping assertion."@en .
+
+ifq:mapsToIFQLevel
+    a owl:ObjectProperty ;
+    rdfs:label "maps to IFQ level"@en ;
+    rdfs:domain ifq:EducationStage ;
+    rdfs:range ifq:IFQLevel ;
+    rdfs:comment "Relates a local education stage to its approximate IFQ comparator level."@en .
+
+ifq:belongsToSystem
+    a owl:ObjectProperty ;
+    rdfs:label "belongs to education system"@en ;
+    rdfs:domain ifq:EducationStage ;
+    rdfs:range ifq:EducationSystem ;
+    rdfs:comment "Relates an education stage to the education system in which it occurs."@en .
+
+ifq:hasQualification
+    a owl:ObjectProperty ;
+    rdfs:label "has qualification"@en ;
+    rdfs:domain ifq:EducationStage ;
+    rdfs:range ifq:Qualification ;
+    rdfs:comment "Relates an education stage to an associated qualification, exam, certificate, diploma, or degree."@en .
+
+ifq:targetsIFQLevel
+    a owl:ObjectProperty ;
+    rdfs:label "targets IFQ level"@en ;
+    rdfs:domain ifq:LearningResource ;
+    rdfs:range ifq:IFQLevel ;
+    rdfs:comment "Relates a learning resource to the approximate IFQ level for which it is intended."@en .
+
+ifq:hasSource
+    a owl:ObjectProperty ;
+    rdfs:label "has source"@en ;
+    rdfs:domain ifq:MappingAssertion ;
+    rdfs:range ifq:Source ;
+    rdfs:comment "Relates a mapping assertion to a supporting source."@en .
+
+ifq:assertsStage
+    a owl:ObjectProperty ;
+    rdfs:label "asserts stage"@en ;
+    rdfs:domain ifq:MappingAssertion ;
+    rdfs:range ifq:EducationStage ;
+    rdfs:comment "Relates a mapping assertion to the local education stage being mapped."@en .
+
+ifq:assertsIFQLevel
+    a owl:ObjectProperty ;
+    rdfs:label "asserts IFQ level"@en ;
+    rdfs:domain ifq:MappingAssertion ;
+    rdfs:range ifq:IFQLevel ;
+    rdfs:comment "Relates a mapping assertion to the IFQ level asserted for the education stage."@en .
+
+ifq:precedes
+    a owl:ObjectProperty ;
+    rdfs:label "precedes"@en ;
+    rdfs:domain ifq:IFQLevel ;
+    rdfs:range ifq:IFQLevel ;
+    rdfs:comment "Relates an IFQ level to the following IFQ level in the canonical progression sequence."@en .
+
+ifq:follows
+    a owl:ObjectProperty ;
+    rdfs:label "follows"@en ;
+    rdfs:domain ifq:IFQLevel ;
+    rdfs:range ifq:IFQLevel ;
+    rdfs:comment "Relates an IFQ level to the previous IFQ level in the canonical progression sequence."@en .
+
+ifq:ifqLevelNumber
+    a owl:DatatypeProperty ;
+    rdfs:label "IFQ level number"@en ;
+    rdfs:domain ifq:IFQLevel ;
+    rdfs:range xsd:integer .
+
+ifq:alignedWithISCED
+    a owl:DatatypeProperty ;
+    rdfs:label "aligned with ISCED"@en ;
+    rdfs:range xsd:string .
+
+ifq:broadStage
+    a owl:DatatypeProperty ;
+    rdfs:label "broad stage"@en ;
+    rdfs:range xsd:string .
+
+ifq:typicalAge
+    a owl:DatatypeProperty ;
+    rdfs:label "typical age"@en ;
+    rdfs:range xsd:integer .
+
+ifq:typicalMinAge
+    a owl:DatatypeProperty ;
+    rdfs:label "typical minimum age"@en ;
+    rdfs:range xsd:integer .
+
+ifq:typicalMaxAge
+    a owl:DatatypeProperty ;
+    rdfs:label "typical maximum age"@en ;
+    rdfs:range xsd:integer .
+
+ifq:countryCode
+    a owl:DatatypeProperty ;
+    rdfs:label "country or system code"@en ;
+    rdfs:domain ifq:EducationSystem ;
+    rdfs:range xsd:string .
+
+ifq:localStageName
+    a owl:DatatypeProperty ;
+    rdfs:label "local stage name"@en ;
+    rdfs:domain ifq:EducationStage ;
+    rdfs:range xsd:string .
+
+ifq:qualificationType
+    a owl:DatatypeProperty ;
+    rdfs:label "qualification type"@en ;
+    rdfs:range xsd:string .
+
+ifq:progressionType
+    a owl:DatatypeProperty ;
+    rdfs:label "progression type"@en ;
+    rdfs:range xsd:string .
+
+ifq:confidence
+    a owl:DatatypeProperty ;
+    rdfs:label "confidence"@en ;
+    rdfs:range xsd:string .
+
+ifq:notes
+    a owl:DatatypeProperty ;
+    rdfs:label "notes"@en ;
+    rdfs:range xsd:string .
+
+ifq:sourceName
+    a owl:DatatypeProperty ;
+    rdfs:label "source name"@en ;
+    rdfs:domain ifq:Source ;
+    rdfs:range xsd:string .
+
+ifq:sourceURL
+    a owl:DatatypeProperty ;
+    rdfs:label "source URL"@en ;
+    rdfs:domain ifq:Source ;
+    rdfs:range xsd:anyURI .
+
+ifq:IFQConceptScheme
+    a skos:ConceptScheme ;
+    skos:prefLabel "International Framework of Qualifications Levels"@en ;
+    skos:definition "A 22-level sparse international educational progression concept scheme."@en .

@@ -1,0 +1,204 @@
+@prefix ifq: <https://wherewelearn.org/ontology/ifq#> .
+@prefix ex: <https://wherewelearn.org/ontology/ifq/examples#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+#################################################################
+# IFQ Mapping Examples
+#################################################################
+
+ex:ExampleMappings
+    a owl:Ontology ;
+    rdfs:label "IFQ Mapping Examples"@en ;
+    dcterms:title "IFQ Mapping Examples"@en ;
+    dcterms:description "Representative RDF examples showing how national education stages and learning resources map into IFQ."@en ;
+    dcterms:creator "WhereWeLearn"@en ;
+    dcterms:issued "2026-05-09"^^xsd:date ;
+    owl:imports ifq:Ontology .
+
+#################################################################
+# Education Systems
+#################################################################
+
+ex:IrelandEducationSystem
+    a ifq:EducationSystem ;
+    rdfs:label "Ireland Education System"@en ;
+    ifq:countryCode "IE" ;
+    ifq:notes "Irish mainstream education system used as an IFQ comparator mapping example."@en .
+
+ex:EnglandEducationSystem
+    a ifq:EducationSystem ;
+    rdfs:label "England Education System"@en ;
+    ifq:countryCode "EN" ;
+    ifq:notes "England education system used as an IFQ comparator mapping example."@en .
+
+ex:SwitzerlandEducationSystem
+    a ifq:EducationSystem ;
+    rdfs:label "Switzerland Education System"@en ;
+    ifq:countryCode "CH" ;
+    ifq:notes "Swiss education system used as an example of vocational and academic parallel pathway complexity retained as metadata."@en .
+
+ex:WhereWeLearnSystem
+    a ifq:EducationSystem ;
+    rdfs:label "WhereWeLearn Learning Resource System"@en ;
+    ifq:countryCode "WWL" ;
+    ifq:notes "WhereWeLearn platform resource classification context."@en .
+
+#################################################################
+# Sources
+#################################################################
+
+ex:Source_QQI_NFQ
+    a ifq:Source ;
+    rdfs:label "Quality and Qualifications Ireland National Framework of Qualifications"@en ;
+    ifq:sourceName "Quality and Qualifications Ireland — National Framework of Qualifications" ;
+    ifq:sourceURL <https://www.qqi.ie/what-we-do/the-qualifications-system/national-framework-of-qualifications> .
+
+ex:Source_GOVUK_NationalCurriculum
+    a ifq:Source ;
+    rdfs:label "GOV.UK National Curriculum"@en ;
+    ifq:sourceName "Department for Education — The national curriculum: overview" ;
+    ifq:sourceURL <https://www.gov.uk/national-curriculum> .
+
+ex:Source_Eurydice_Switzerland
+    a ifq:Source ;
+    rdfs:label "Eurydice Switzerland education system overview"@en ;
+    ifq:sourceName "Eurydice — Switzerland: Organisation of the education system and of its structure" ;
+    ifq:sourceURL <https://eurydice.eacea.ec.europa.eu/eurypedia/switzerland/organisation-education-system-and-its-structure> .
+
+ex:Source_IFQ_Internal
+    a ifq:Source ;
+    rdfs:label "IFQ Internal Mapping Methodology"@en ;
+    ifq:sourceName "WhereWeLearn IFQ internal sparse progression mapping methodology" .
+
+#################################################################
+# Example 1: Ireland 5th Year → IFQ Level 14
+#################################################################
+
+ex:Ireland_Secondary_5thYear
+    a ifq:EducationStage ;
+    rdfs:label "Ireland Secondary School 5th Year"@en ;
+    ifq:belongsToSystem ex:IrelandEducationSystem ;
+    ifq:mapsToIFQLevel ifq:IFQ_14 ;
+    ifq:localStageName "5th Year" ;
+    ifq:broadStage "Upper Secondary" ;
+    ifq:alignedWithISCED "3" ;
+    ifq:typicalMinAge 16 ;
+    ifq:typicalMaxAge 16 ;
+    ifq:progressionType "Academic" ;
+    ifq:confidence "High" ;
+    ifq:notes "Senior Cycle 5th Year; Leaving Certificate pathway. IFQ maps progression stage, not curriculum equivalence."@en .
+
+ex:Ireland_5thYear_IFQ14_Assertion
+    a ifq:MappingAssertion ;
+    rdfs:label "Mapping assertion: Ireland 5th Year to IFQ Level 14"@en ;
+    ifq:assertsStage ex:Ireland_Secondary_5thYear ;
+    ifq:assertsIFQLevel ifq:IFQ_14 ;
+    ifq:confidence "High" ;
+    ifq:hasSource ex:Source_QQI_NFQ ;
+    ifq:notes "Mapping based on age-normalised upper-secondary progression and Leaving Certificate pathway context."@en .
+
+#################################################################
+# Example 2: England Year 11 / GCSE → IFQ Level 13
+#################################################################
+
+ex:England_Year11_GCSE
+    a ifq:EducationStage ;
+    rdfs:label "England Year 11 / GCSE"@en ;
+    ifq:belongsToSystem ex:EnglandEducationSystem ;
+    ifq:mapsToIFQLevel ifq:IFQ_13 ;
+    ifq:localStageName "Year 11" ;
+    ifq:broadStage "Upper Secondary" ;
+    ifq:alignedWithISCED "3" ;
+    ifq:typicalMinAge 15 ;
+    ifq:typicalMaxAge 16 ;
+    ifq:progressionType "Academic" ;
+    ifq:qualificationType "State Exam" ;
+    ifq:confidence "High" ;
+    ifq:notes "Key Stage 4 GCSE completion year. IFQ models approximate progression stage, not GCSE subject-level competency."@en .
+
+ex:GCSE
+    a ifq:Qualification ;
+    rdfs:label "General Certificate of Secondary Education"@en ;
+    ifq:qualificationType "State Exam" ;
+    ifq:notes "Qualification associated with England Year 11 / Key Stage 4 completion."@en .
+
+ex:England_Year11_GCSE
+    ifq:hasQualification ex:GCSE .
+
+ex:England_Year11_IFQ13_Assertion
+    a ifq:MappingAssertion ;
+    rdfs:label "Mapping assertion: England Year 11 GCSE to IFQ Level 13"@en ;
+    ifq:assertsStage ex:England_Year11_GCSE ;
+    ifq:assertsIFQLevel ifq:IFQ_13 ;
+    ifq:confidence "High" ;
+    ifq:hasSource ex:Source_GOVUK_NationalCurriculum ;
+    ifq:notes "Mapping based on age-normalised upper-secondary progression and GCSE completion context."@en .
+
+#################################################################
+# Example 3: Switzerland Matura / VET Completion → IFQ Level 15
+#################################################################
+
+ex:Switzerland_Matura_VET_Completion
+    a ifq:EducationStage ;
+    rdfs:label "Switzerland Matura / VET Completion"@en ;
+    ifq:belongsToSystem ex:SwitzerlandEducationSystem ;
+    ifq:mapsToIFQLevel ifq:IFQ_15 ;
+    ifq:localStageName "Matura / Federal VET Certificate" ;
+    ifq:broadStage "Upper Secondary" ;
+    ifq:alignedWithISCED "3" ;
+    ifq:typicalMinAge 18 ;
+    ifq:typicalMaxAge 19 ;
+    ifq:progressionType "Academic/Vocational" ;
+    ifq:qualificationType "State Exam/Qualification" ;
+    ifq:confidence "Medium" ;
+    ifq:notes "Swiss academic and vocational upper-secondary routes differ structurally but both represent legitimate upper-secondary endpoints. IFQ preserves progression comparability and leaves vocational prestige as metadata."@en .
+
+ex:Swiss_Matura
+    a ifq:Qualification ;
+    rdfs:label "Swiss Matura"@en ;
+    ifq:qualificationType "State Exam" ;
+    ifq:notes "Academic upper-secondary completion qualification."@en .
+
+ex:Swiss_Federal_VET_Certificate
+    a ifq:Qualification ;
+    rdfs:label "Swiss Federal VET Certificate"@en ;
+    ifq:qualificationType "Vocational Qualification" ;
+    ifq:notes "Vocational upper-secondary completion qualification."@en .
+
+ex:Switzerland_Matura_VET_Completion
+    ifq:hasQualification ex:Swiss_Matura, ex:Swiss_Federal_VET_Certificate .
+
+ex:Switzerland_Matura_VET_IFQ15_Assertion
+    a ifq:MappingAssertion ;
+    rdfs:label "Mapping assertion: Switzerland Matura / VET Completion to IFQ Level 15"@en ;
+    ifq:assertsStage ex:Switzerland_Matura_VET_Completion ;
+    ifq:assertsIFQLevel ifq:IFQ_15 ;
+    ifq:confidence "Medium" ;
+    ifq:hasSource ex:Source_Eurydice_Switzerland ;
+    ifq:notes "Mapping based on approximate upper-secondary completion. The assertion intentionally does not equate academic Matura and VET credentials in curriculum, prestige, or labour-market value."@en .
+
+#################################################################
+# Example 4: Learning Resource → IFQ Level 10
+#################################################################
+
+ex:IntroductoryAlgebraLesson
+    a ifq:LearningResource ;
+    rdfs:label "Introductory Algebra Lesson"@en ;
+    ifq:targetsIFQLevel ifq:IFQ_10 ;
+    ifq:broadStage "Lower Secondary" ;
+    ifq:progressionType "Learning Resource" ;
+    ifq:confidence "Approximate" ;
+    ifq:notes "Example lesson classification. The lesson targets an approximate lower-secondary progression stage, but individual learner readiness may vary."@en .
+
+ex:IntroductoryAlgebra_IFQ10_Assertion
+    a ifq:MappingAssertion ;
+    rdfs:label "Mapping assertion: Introductory Algebra Lesson targets IFQ Level 10"@en ;
+    ifq:assertsIFQLevel ifq:IFQ_10 ;
+    ifq:confidence "Approximate" ;
+    ifq:hasSource ex:Source_IFQ_Internal ;
+    ifq:notes "Learning-resource mapping demonstrates how IFQ can support recommendation without asserting learner competency."@en .

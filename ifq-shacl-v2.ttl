@@ -1,0 +1,257 @@
+@prefix ifq: <https://wherewelearn.org/ontology/ifq#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+#################################################################
+# IFQ SHACL Validation Shapes
+#
+# Purpose:
+#   Lightweight validation for the sparse IFQ ontology.
+#
+# Version:
+#   0.1.1-draft
+#
+# Fixes:
+#   - typicalMaxAge is optional to allow open-ended doctoral/adult ranges.
+#   - sourceURL may be either an xsd:anyURI literal or an IRI.
+#################################################################
+
+ifq:ConfidenceValueShape
+    a sh:NodeShape ;
+    sh:targetSubjectsOf ifq:confidence ;
+    sh:property [
+        sh:path ifq:confidence ;
+        sh:in ( "High" "Medium" "Low" "Approximate" ) ;
+        sh:message "ifq:confidence should be one of: High, Medium, Low, Approximate."@en ;
+    ] .
+
+ifq:IFQLevelShape
+    a sh:NodeShape ;
+    sh:targetClass ifq:IFQLevel ;
+
+    sh:property [
+        sh:path ifq:ifqLevelNumber ;
+        sh:datatype xsd:integer ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:minInclusive 1 ;
+        sh:maxInclusive 22 ;
+        sh:message "Each IFQ level must have exactly one integer ifq:ifqLevelNumber between 1 and 22."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ifq:broadStage ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "Each IFQ level must have exactly one broad stage."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ifq:alignedWithISCED ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "Each IFQ level must have exactly one approximate ISCED alignment."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ifq:typicalAge ;
+        sh:datatype xsd:integer ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:minInclusive 3 ;
+        sh:message "Each IFQ level must have one typical age as a positive integer."@en ;
+    ] .
+
+ifq:EducationSystemShape
+    a sh:NodeShape ;
+    sh:targetClass ifq:EducationSystem ;
+
+    sh:property [
+        sh:path ifq:countryCode ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:minLength 2 ;
+        sh:maxLength 5 ;
+        sh:message "Each education system must have one country or reference-system code."@en ;
+    ] ;
+
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:message "Each education system should have a human-readable rdfs:label."@en ;
+    ] .
+
+ifq:EducationStageShape
+    a sh:NodeShape ;
+    sh:targetClass ifq:EducationStage ;
+
+    sh:property [
+        sh:path ifq:belongsToSystem ;
+        sh:class ifq:EducationSystem ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "Each education stage must belong to exactly one education system."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ifq:mapsToIFQLevel ;
+        sh:class ifq:IFQLevel ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "Each education stage must map to exactly one IFQ level in the sparse core model."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ifq:localStageName ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:message "Each education stage must have a local stage name."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ifq:broadStage ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:message "Each education stage should include a broad stage overlay."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ifq:alignedWithISCED ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:message "Each education stage should include an approximate ISCED alignment."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ifq:typicalMinAge ;
+        sh:datatype xsd:integer ;
+        sh:minCount 1 ;
+        sh:minInclusive 3 ;
+        sh:message "Each education stage should include a typical minimum age."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ifq:typicalMaxAge ;
+        sh:datatype xsd:integer ;
+        sh:maxCount 1 ;
+        sh:minInclusive 3 ;
+        sh:message "If present, typical maximum age must be a positive integer."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ifq:progressionType ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:message "Each education stage should include a progression type overlay."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ifq:confidence ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:in ( "High" "Medium" "Low" "Approximate" ) ;
+        sh:message "Each education stage should include a valid confidence value."@en ;
+    ] .
+
+ifq:QualificationShape
+    a sh:NodeShape ;
+    sh:targetClass ifq:Qualification ;
+
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:message "Each qualification should have a human-readable rdfs:label."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ifq:qualificationType ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:message "Each qualification should include a qualification type."@en ;
+    ] .
+
+ifq:LearningResourceShape
+    a sh:NodeShape ;
+    sh:targetClass ifq:LearningResource ;
+
+    sh:property [
+        sh:path ifq:targetsIFQLevel ;
+        sh:class ifq:IFQLevel ;
+        sh:minCount 1 ;
+        sh:message "Each learning resource should target at least one IFQ level."@en ;
+    ] ;
+
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:message "Each learning resource should have a human-readable rdfs:label."@en ;
+    ] .
+
+ifq:MappingAssertionShape
+    a sh:NodeShape ;
+    sh:targetClass ifq:MappingAssertion ;
+
+    sh:property [
+        sh:path ifq:assertsIFQLevel ;
+        sh:class ifq:IFQLevel ;
+        sh:minCount 1 ;
+        sh:message "Each mapping assertion must assert at least one IFQ level."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ifq:confidence ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:in ( "High" "Medium" "Low" "Approximate" ) ;
+        sh:message "Each mapping assertion must include a valid confidence value."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ifq:hasSource ;
+        sh:class ifq:Source ;
+        sh:minCount 1 ;
+        sh:message "Each mapping assertion should have at least one source."@en ;
+    ] .
+
+ifq:SourceShape
+    a sh:NodeShape ;
+    sh:targetClass ifq:Source ;
+
+    sh:property [
+        sh:path ifq:sourceName ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:message "Each source must have a source name."@en ;
+    ] ;
+
+    sh:property [
+        sh:path ifq:sourceURL ;
+        sh:maxCount 1 ;
+        sh:or (
+            [ sh:datatype xsd:anyURI ]
+            [ sh:nodeKind sh:IRI ]
+        ) ;
+        sh:message "A source may have at most one source URL, either as an xsd:anyURI literal or an IRI."@en ;
+    ] .
+
+ifq:AgeRangeAdvisoryShape
+    a sh:NodeShape ;
+    sh:targetClass ifq:EducationStage ;
+
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "typicalMaxAge should be greater than or equal to typicalMinAge when both are present."@en ;
+        sh:select """
+            PREFIX ifq: <https://wherewelearn.org/ontology/ifq#>
+            SELECT $this
+            WHERE {
+                $this ifq:typicalMinAge ?min ;
+                      ifq:typicalMaxAge ?max .
+                FILTER (?max < ?min)
+            }
+        """ ;
+    ] .

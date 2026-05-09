@@ -1,0 +1,297 @@
+@prefix ifq: <https://wherewelearn.org/ontology/ifq#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ifq:IFQConceptScheme
+    a skos:ConceptScheme ;
+    skos:prefLabel "International Framework of Qualifications Levels"@en ;
+    skos:definition "A 22-level sparse international educational progression concept scheme."@en .
+
+ifq:IFQ_01
+    a ifq:IFQLevel, skos:Concept ;
+    skos:prefLabel "IFQ Level 1"@en ;
+    skos:notation "1" ;
+    skos:inScheme ifq:IFQConceptScheme ;
+    skos:definition "Approximate early childhood or pre-primary progression stage."@en ;
+    ifq:ifqLevelNumber 1 ;
+    ifq:broadStage "Early Years" ;
+    ifq:alignedWithISCED "0" ;
+    ifq:typicalAge 4 ;
+    ifq:precedes ifq:IFQ_02 .
+
+ifq:IFQ_02
+    a ifq:IFQLevel, skos:Concept ;
+    skos:prefLabel "IFQ Level 2"@en ;
+    skos:notation "2" ;
+    skos:inScheme ifq:IFQConceptScheme ;
+    skos:definition "Approximate transition from early years toward primary progression."@en ;
+    ifq:ifqLevelNumber 2 ;
+    ifq:broadStage "Primary" ;
+    ifq:alignedWithISCED "0/1" ;
+    ifq:typicalAge 5 ;
+    ifq:follows ifq:IFQ_01 ;
+    ifq:precedes ifq:IFQ_03 .
+
+ifq:IFQ_03
+    a ifq:IFQLevel, skos:Concept ;
+    skos:prefLabel "IFQ Level 3"@en ;
+    skos:notation "3" ;
+    skos:inScheme ifq:IFQConceptScheme ;
+    skos:definition "Approximate early primary entry progression stage."@en ;
+    ifq:ifqLevelNumber 3 ;
+    ifq:broadStage "Primary" ;
+    ifq:alignedWithISCED "1" ;
+    ifq:typicalAge 6 ;
+    ifq:follows ifq:IFQ_02 ;
+    ifq:precedes ifq:IFQ_04 .
+
+ifq:IFQ_04
+    a ifq:IFQLevel, skos:Concept ;
+    skos:prefLabel "IFQ Level 4"@en ;
+    skos:notation "4" ;
+    skos:inScheme ifq:IFQConceptScheme ;
+    skos:definition "Approximate primary progression stage."@en ;
+    ifq:ifqLevelNumber 4 ;
+    ifq:broadStage "Primary" ;
+    ifq:alignedWithISCED "1" ;
+    ifq:typicalAge 7 ;
+    ifq:follows ifq:IFQ_03 ;
+    ifq:precedes ifq:IFQ_05 .
+
+ifq:IFQ_05
+    a ifq:IFQLevel, skos:Concept ;
+    skos:prefLabel "IFQ Level 5"@en ;
+    skos:notation "5" ;
+    skos:inScheme ifq:IFQConceptScheme ;
+    skos:definition "Approximate primary progression stage."@en ;
+    ifq:ifqLevelNumber 5 ;
+    ifq:broadStage "Primary" ;
+    ifq:alignedWithISCED "1" ;
+    ifq:typicalAge 8 ;
+    ifq:follows ifq:IFQ_04 ;
+    ifq:precedes ifq:IFQ_06 .
+
+ifq:IFQ_06
+    a ifq:IFQLevel, skos:Concept ;
+    skos:prefLabel "IFQ Level 6"@en ;
+    skos:notation "6" ;
+    skos:inScheme ifq:IFQConceptScheme ;
+    skos:definition "Approximate primary progression stage."@en ;
+    ifq:ifqLevelNumber 6 ;
+    ifq:broadStage "Primary" ;
+    ifq:alignedWithISCED "1" ;
+    ifq:typicalAge 9 ;
+    ifq:follows ifq:IFQ_05 ;
+    ifq:precedes ifq:IFQ_07 .
+
+ifq:IFQ_07
+    a ifq:IFQLevel, skos:Concept ;
+    skos:prefLabel "IFQ Level 7"@en ;
+    skos:notation "7" ;
+    skos:inScheme ifq:IFQConceptScheme ;
+    skos:definition "Approximate upper primary progression stage."@en ;
+    ifq:ifqLevelNumber 7 ;
+    ifq:broadStage "Primary" ;
+    ifq:alignedWithISCED "1" ;
+    ifq:typicalAge 10 ;
+    ifq:follows ifq:IFQ_06 ;
+    ifq:precedes ifq:IFQ_08 .
+
+ifq:IFQ_08
+    a ifq:IFQLevel, skos:Concept ;
+    skos:prefLabel "IFQ Level 8"@en ;
+    skos:notation "8" ;
+    skos:inScheme ifq:IFQConceptScheme ;
+    skos:definition "Approximate upper primary progression stage."@en ;
+    ifq:ifqLevelNumber 8 ;
+    ifq:broadStage "Primary" ;
+    ifq:alignedWithISCED "1" ;
+    ifq:typicalAge 11 ;
+    ifq:follows ifq:IFQ_07 ;
+    ifq:precedes ifq:IFQ_09 .
+
+ifq:IFQ_09
+    a ifq:IFQLevel, skos:Concept ;
+    skos:prefLabel "IFQ Level 9"@en ;
+    skos:notation "9" ;
+    skos:inScheme ifq:IFQConceptScheme ;
+    skos:definition "Approximate transition from primary to lower secondary progression."@en ;
+    ifq:ifqLevelNumber 9 ;
+    ifq:broadStage "Primary" ;
+    ifq:alignedWithISCED "1/2" ;
+    ifq:typicalAge 12 ;
+    ifq:follows ifq:IFQ_08 ;
+    ifq:precedes ifq:IFQ_10 .
+
+ifq:IFQ_10
+    a ifq:IFQLevel, skos:Concept ;
+    skos:prefLabel "IFQ Level 10"@en ;
+    skos:notation "10" ;
+    skos:inScheme ifq:IFQConceptScheme ;
+    skos:definition "Approximate lower secondary progression stage."@en ;
+    ifq:ifqLevelNumber 10 ;
+    ifq:broadStage "Lower Secondary" ;
+    ifq:alignedWithISCED "2" ;
+    ifq:typicalAge 13 ;
+    ifq:follows ifq:IFQ_09 ;
+    ifq:precedes ifq:IFQ_11 .
+
+ifq:IFQ_11
+    a ifq:IFQLevel, skos:Concept ;
+    skos:prefLabel "IFQ Level 11"@en ;
+    skos:notation "11" ;
+    skos:inScheme ifq:IFQConceptScheme ;
+    skos:definition "Approximate lower secondary progression stage."@en ;
+    ifq:ifqLevelNumber 11 ;
+    ifq:broadStage "Lower Secondary" ;
+    ifq:alignedWithISCED "2" ;
+    ifq:typicalAge 14 ;
+    ifq:follows ifq:IFQ_10 ;
+    ifq:precedes ifq:IFQ_12 .
+
+ifq:IFQ_12
+    a ifq:IFQLevel, skos:Concept ;
+    skos:prefLabel "IFQ Level 12"@en ;
+    skos:notation "12" ;
+    skos:inScheme ifq:IFQConceptScheme ;
+    skos:definition "Approximate transition from lower secondary to upper secondary progression."@en ;
+    ifq:ifqLevelNumber 12 ;
+    ifq:broadStage "Lower Secondary" ;
+    ifq:alignedWithISCED "2/3" ;
+    ifq:typicalAge 15 ;
+    ifq:follows ifq:IFQ_11 ;
+    ifq:precedes ifq:IFQ_13 .
+
+ifq:IFQ_13
+    a ifq:IFQLevel, skos:Concept ;
+    skos:prefLabel "IFQ Level 13"@en ;
+    skos:notation "13" ;
+    skos:inScheme ifq:IFQConceptScheme ;
+    skos:definition "Approximate upper secondary progression stage."@en ;
+    ifq:ifqLevelNumber 13 ;
+    ifq:broadStage "Upper Secondary" ;
+    ifq:alignedWithISCED "3" ;
+    ifq:typicalAge 16 ;
+    ifq:follows ifq:IFQ_12 ;
+    ifq:precedes ifq:IFQ_14 .
+
+ifq:IFQ_14
+    a ifq:IFQLevel, skos:Concept ;
+    skos:prefLabel "IFQ Level 14"@en ;
+    skos:notation "14" ;
+    skos:inScheme ifq:IFQConceptScheme ;
+    skos:definition "Approximate upper secondary progression stage."@en ;
+    ifq:ifqLevelNumber 14 ;
+    ifq:broadStage "Upper Secondary" ;
+    ifq:alignedWithISCED "3" ;
+    ifq:typicalAge 17 ;
+    ifq:follows ifq:IFQ_13 ;
+    ifq:precedes ifq:IFQ_15 .
+
+ifq:IFQ_15
+    a ifq:IFQLevel, skos:Concept ;
+    skos:prefLabel "IFQ Level 15"@en ;
+    skos:notation "15" ;
+    skos:inScheme ifq:IFQConceptScheme ;
+    skos:definition "Approximate upper secondary completion or university-entry progression stage."@en ;
+    ifq:ifqLevelNumber 15 ;
+    ifq:broadStage "Upper Secondary" ;
+    ifq:alignedWithISCED "3" ;
+    ifq:typicalAge 18 ;
+    ifq:follows ifq:IFQ_14 ;
+    ifq:precedes ifq:IFQ_16 .
+
+ifq:IFQ_16
+    a ifq:IFQLevel, skos:Concept ;
+    skos:prefLabel "IFQ Level 16"@en ;
+    skos:notation "16" ;
+    skos:inScheme ifq:IFQConceptScheme ;
+    skos:definition "Approximate post-secondary, bridging, certificate, or short-cycle tertiary stage."@en ;
+    ifq:ifqLevelNumber 16 ;
+    ifq:broadStage "Post-Secondary" ;
+    ifq:alignedWithISCED "4/5" ;
+    ifq:typicalAge 18 ;
+    ifq:follows ifq:IFQ_15 ;
+    ifq:precedes ifq:IFQ_17 .
+
+ifq:IFQ_17
+    a ifq:IFQLevel, skos:Concept ;
+    skos:prefLabel "IFQ Level 17"@en ;
+    skos:notation "17" ;
+    skos:inScheme ifq:IFQConceptScheme ;
+    skos:definition "Approximate short-cycle tertiary or advanced diploma progression stage."@en ;
+    ifq:ifqLevelNumber 17 ;
+    ifq:broadStage "Short-cycle Tertiary" ;
+    ifq:alignedWithISCED "5" ;
+    ifq:typicalAge 18 ;
+    ifq:follows ifq:IFQ_16 ;
+    ifq:precedes ifq:IFQ_18 .
+
+ifq:IFQ_18
+    a ifq:IFQLevel, skos:Concept ;
+    skos:prefLabel "IFQ Level 18"@en ;
+    skos:notation "18" ;
+    skos:inScheme ifq:IFQConceptScheme ;
+    skos:definition "Approximate early undergraduate progression stage."@en ;
+    ifq:ifqLevelNumber 18 ;
+    ifq:broadStage "Undergraduate" ;
+    ifq:alignedWithISCED "6" ;
+    ifq:typicalAge 18 ;
+    ifq:follows ifq:IFQ_17 ;
+    ifq:precedes ifq:IFQ_19 .
+
+ifq:IFQ_19
+    a ifq:IFQLevel, skos:Concept ;
+    skos:prefLabel "IFQ Level 19"@en ;
+    skos:notation "19" ;
+    skos:inScheme ifq:IFQConceptScheme ;
+    skos:definition "Approximate bachelor degree or undergraduate completion stage."@en ;
+    ifq:ifqLevelNumber 19 ;
+    ifq:broadStage "Undergraduate" ;
+    ifq:alignedWithISCED "6" ;
+    ifq:typicalAge 18 ;
+    ifq:follows ifq:IFQ_18 ;
+    ifq:precedes ifq:IFQ_20 .
+
+ifq:IFQ_20
+    a ifq:IFQLevel, skos:Concept ;
+    skos:prefLabel "IFQ Level 20"@en ;
+    skos:notation "20" ;
+    skos:inScheme ifq:IFQConceptScheme ;
+    skos:definition "Approximate post-bachelor transition, graduate certificate, honours, or postgraduate diploma stage."@en ;
+    ifq:ifqLevelNumber 20 ;
+    ifq:broadStage "Postgraduate Transition" ;
+    ifq:alignedWithISCED "6/7" ;
+    ifq:typicalAge 21 ;
+    ifq:follows ifq:IFQ_19 ;
+    ifq:precedes ifq:IFQ_21 .
+
+ifq:IFQ_21
+    a ifq:IFQLevel, skos:Concept ;
+    skos:prefLabel "IFQ Level 21"@en ;
+    skos:notation "21" ;
+    skos:inScheme ifq:IFQConceptScheme ;
+    skos:definition "Approximate masters degree or equivalent postgraduate stage."@en ;
+    ifq:ifqLevelNumber 21 ;
+    ifq:broadStage "Postgraduate" ;
+    ifq:alignedWithISCED "7" ;
+    ifq:typicalAge 21 ;
+    ifq:follows ifq:IFQ_20 ;
+    ifq:precedes ifq:IFQ_22 .
+
+ifq:IFQ_22
+    a ifq:IFQLevel, skos:Concept ;
+    skos:prefLabel "IFQ Level 22"@en ;
+    skos:notation "22" ;
+    skos:inScheme ifq:IFQConceptScheme ;
+    skos:definition "Approximate doctoral degree or equivalent research stage."@en ;
+    ifq:ifqLevelNumber 22 ;
+    ifq:broadStage "Doctoral" ;
+    ifq:alignedWithISCED "8" ;
+    ifq:typicalAge 24 ;
+    ifq:follows ifq:IFQ_21 .
+
