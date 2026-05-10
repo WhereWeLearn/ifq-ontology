@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 ifq_sql_to_rdf.py
 
@@ -111,8 +111,8 @@ def load_db_config() -> dict:
 # RDF CONFIG
 # ============================================================================
 
-IFQ_PREFIX = "https://wherewelearn.org/ontology/ifq#"
-MAP_PREFIX = "https://wherewelearn.org/ontology/ifq/mappings#"
+IFQ_PREFIX = "https://wherewelearn.com/ontology/ifq#"
+MAP_PREFIX = "https://wherewelearn.com/ontology/ifq/mappings#"
 
 DEFAULT_OUTPUT = "ifq-country-mappings.ttl"
 

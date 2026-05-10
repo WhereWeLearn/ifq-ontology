@@ -1,4 +1,4 @@
-@prefix ifq: <https://wherewelearn.org/ontology/ifq#> .
+﻿@prefix ifq: <https://wherewelearn.com/ontology/ifq#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -246,7 +246,7 @@ ifq:AgeRangeAdvisoryShape
         a sh:SPARQLConstraint ;
         sh:message "typicalMaxAge should be greater than or equal to typicalMinAge when both are present."@en ;
         sh:select """
-            PREFIX ifq: <https://wherewelearn.org/ontology/ifq#>
+            PREFIX ifq: <https://wherewelearn.com/ontology/ifq#>
             SELECT $this
             WHERE {
                 $this ifq:typicalMinAge ?min ;
