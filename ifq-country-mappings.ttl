@@ -11,8 +11,12 @@ map:IFQCountryMappings
     a owl:Ontology ;
     rdfs:label "IFQ Country and System Mappings"@en ;
     dcterms:title "IFQ Country and System Mappings"@en ;
-    dcterms:description "Generated RDF export of IFQ country/system mappings from the WhereWeLearn IFQ SQL table."@en ;
+    dcterms:description "Generated RDF export of IFQ country/system mappings from the WhereWeLearn IFQ SQL table. Do not edit directly — regenerate using ifq_sql_to_rdf.py."@en ;
     dcterms:creator "WhereWeLearn"@en ;
+    dcterms:issued "2026-05-11"^^xsd:date ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:rights "Copyright 2026 WhereWeLearn. Licensed under CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/"@en ;
+    owl:versionInfo "1.0.0" ;
     owl:imports ifq:Ontology .
 
 

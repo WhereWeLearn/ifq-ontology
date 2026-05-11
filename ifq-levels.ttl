@@ -6,6 +6,16 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+ifq:LevelsOntology
+    a owl:Ontology ;
+    dcterms:title "IFQ Levels"@en ;
+    dcterms:description "The 22-level SKOS concept scheme for the International Framework of Qualifications."@en ;
+    dcterms:creator "WhereWeLearn"@en ;
+    dcterms:issued "2026-05-11"^^xsd:date ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:rights "Copyright 2026 WhereWeLearn. Licensed under CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/"@en ;
+    owl:versionInfo "1.0.0" .
+
 ifq:IFQConceptScheme
     a skos:ConceptScheme ;
     skos:prefLabel "International Framework of Qualifications Levels"@en ;

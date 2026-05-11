@@ -12,8 +12,10 @@ ifq:Ontology
     dcterms:title "International Framework of Qualifications Ontology"@en ;
     dcterms:description "A sparse international educational progression ontology for approximate educational interoperability."@en ;
     dcterms:creator "WhereWeLearn"@en ;
-    dcterms:issued "2026-05-09"^^xsd:date ;
-    owl:versionInfo "0.1.0-draft" ;
+    dcterms:issued "2026-05-11"^^xsd:date ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:rights "Copyright 2026 WhereWeLearn. Licensed under CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/"@en ;
+    owl:versionInfo "1.0.0" ;
     rdfs:comment "IFQ models approximate educational progression, not legal equivalence, competency mastery, curriculum equality, institutional prestige, or educational quality."@en .
 
 ifq:IFQLevel

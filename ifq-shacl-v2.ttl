@@ -1,7 +1,19 @@
 ﻿@prefix ifq: <https://wherewelearn.com/ontology/ifq#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ifq:SHACLOntology
+    a owl:Ontology ;
+    dcterms:title "IFQ SHACL Validation Shapes"@en ;
+    dcterms:description "Lightweight SHACL validation constraints for the sparse IFQ ontology."@en ;
+    dcterms:creator "WhereWeLearn"@en ;
+    dcterms:issued "2026-05-11"^^xsd:date ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:rights "Copyright 2026 WhereWeLearn. Licensed under CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/"@en ;
+    owl:versionInfo "1.0.0" .
 
 #################################################################
 # IFQ SHACL Validation Shapes
@@ -10,9 +22,9 @@
 #   Lightweight validation for the sparse IFQ ontology.
 #
 # Version:
-#   0.1.1-draft
+#   1.0.0
 #
-# Fixes:
+# Notes:
 #   - typicalMaxAge is optional to allow open-ended doctoral/adult ranges.
 #   - sourceURL may be either an xsd:anyURI literal or an IRI.
 #################################################################

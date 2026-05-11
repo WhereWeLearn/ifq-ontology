@@ -17,7 +17,10 @@ ex:ExampleMappings
     dcterms:title "IFQ Mapping Examples"@en ;
     dcterms:description "Representative RDF examples showing how national education stages and learning resources map into IFQ."@en ;
     dcterms:creator "WhereWeLearn"@en ;
-    dcterms:issued "2026-05-09"^^xsd:date ;
+    dcterms:issued "2026-05-11"^^xsd:date ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:rights "Copyright 2026 WhereWeLearn. Licensed under CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/"@en ;
+    owl:versionInfo "1.0.0" ;
     owl:imports ifq:Ontology .
 
 #################################################################
